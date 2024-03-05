@@ -1,0 +1,39 @@
+@media only screen and (max-width: 600px) {
+    /* For mobile: */
+    .m10 {width: 10%;}
+    .m20 {width: 20%;}
+    .m30 {width: 30%;}
+    .m40 {width: 40%;}
+    .m50 {width: 50%;}
+    .m60 {width: 60%;}
+    .m70 {width: 70%;}
+    .m80 {width: 80%;}
+    .m90 {width: 90%;}
+    .m100 {width: 100%;}
+  }
+  @media only screen and (min-width: 601px) and (max-width: 768px) {
+    /* For tablet: */
+    .t10 {width: 10%;}
+    .t20 {width: 20%;}
+    .t30 {width: 30%;}
+    .t40 {width: 40%;}
+    .t50 {width: 50%;}
+    .t60 {width: 60%;}
+    .t70 {width: 70%;}
+    .t80 {width: 80%;}
+    .t90 {width: 90%;}
+    .t100 {width: 100%;}
+  }
+  @media only screen and (min-width: 769px) {
+    /* For desktop: */
+    .d10 {width: 10%;}
+    .d20 {width: 20%;}
+    .d30 {width: 30%;}
+    .d40 {width: 40%;}
+    .d50 {width: 50%;}
+    .d60 {width: 60%;}
+    .d70 {width: 70%;}
+    .d80 {width: 80%;}
+    .d90 {width: 90%;}
+    .d100 {width: 100%;}
+  }

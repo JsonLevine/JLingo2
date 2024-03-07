@@ -5,12 +5,14 @@ function GuessButton({
   submitGuess,
   setCurrentGuess,
   gameOver,
-  resetGame
+  resetGame,
+  endGame
 }: {
   submitGuess : Function
   setCurrentGuess: Function
   gameOver: boolean
   resetGame: Function
+  endGame: Function
 }) {
 
   return (
@@ -25,6 +27,9 @@ function GuessButton({
         </button>
         <button onClick={() => setCurrentGuess([''])} className="clearButton">
           Clear 
+        </button>
+        <button onClick={() => endGame(false)} className="clearButton">
+          Give up 
         </button>
       </div>
     }

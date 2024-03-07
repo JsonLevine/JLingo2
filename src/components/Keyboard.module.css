@@ -1,7 +1,11 @@
-.keyboardContainer {
-  display: flex;
-  align-items: center;
-  width: 100%;
+@media only screen and (max-width: 600px) {
+  /* For mobile: */
+  .keyboard {display: none !important}
+}
+
+@media only screen and (min-width: 601px){
+  /* For everything else: */
+  .keyboardMobile{display: none !important}
 }
 
 .keyboard {
@@ -12,6 +16,18 @@
     flex-direction: column;
     justify-content: space-evenly;
     gap: 0.5rem;
+}
+
+.keyboardMobile {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-evenly;
+  gap: 0.5rem;
+}
+.keyboardMobile .keyboardRow button{
+ padding: .3rem;
+ font-size: 1.3rem
 }
 
 .keyboardRow{

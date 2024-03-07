@@ -3,7 +3,6 @@
 }
 .resetButton{
     margin: .5em;
-    width: 40%;
     border: 3px solid white;
     border-radius: 5px;
     background: hsl(0, 0%, 23%);
@@ -21,7 +20,6 @@
 .guessButton,
 .clearButton{
     margin: .5em;
-    width: 40%;
     border: 3px solid white;
     border-radius: 5px;
     background: hsl(0, 0%, 23%);
@@ -50,4 +48,8 @@ color: white;
 .clearButton:hover,
 .clearButton.focus {
 background-color: rgb(94, 52, 52)
+}
+
+button:active {
+    transform: translateY(3px)
 }

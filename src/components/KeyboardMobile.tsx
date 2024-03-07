@@ -55,7 +55,7 @@ export default function Keyboard({
 }: KeyboardProps) {
 
   return (
-    <div className={styles.keyboard}>
+    <div className={styles.keyboardMobile}>
       <div className={styles.keyboardRow}>
         {KEYSROW1.map(key => {
           const isGreen = greenLetters.includes(key)

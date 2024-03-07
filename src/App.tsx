@@ -3,8 +3,10 @@ import './App.css';
 import './Media.css'
 import GameBoard from './components/GameBoard';
 import Keyboard from './components/Keyboard';
+import KeyboardMobile from './components/KeyboardMobile';
 import { gameWords } from './assets/gameWords';
 import { dictionaryWords } from './assets/dictionaryWords';
+
 
 function App() {
 
@@ -19,11 +21,6 @@ function App() {
   const [currentGuess, setCurrentGuess] = useState([''])
   const [everyGuess, setEveryGuess] = useState([{letter: '', color: ''}].splice(0,0))
   const [gameOver, setGameOver] = useState(false)
-  /*
-      first word(0-4)    second word(5-9)...10-14,15-19,20-24,25-29 
-  ['a','a','a','a','a','b','b','b','b','b']
-  */
-
 
   function getSolutionWord() {
     var number = Math.floor(Math.random() * (gameWords.length))
@@ -51,11 +48,9 @@ function App() {
   }
 
   function submitGuess() {
-    // console.log("Submitting guess: ")
-    // console.log("Current Guess:")
-    // console.log(currentGuess)
     if (!validateGuess(currentGuess.join(''))) {
       console.log("Invalid word")
+      alert("invalid word")
       return null
     }
 
@@ -102,6 +97,8 @@ function App() {
       setCurrentRow(currentRowRef.current)
       setGameOver(true)
     } else {
+      // Populate the current row with the correct word, and make it green
+      setCurrentGuess(solutionWord.split(''))
       setGameOver(true)
     }
     // Invalidate the keyboard
@@ -167,8 +164,18 @@ function App() {
         submitGuess={submitGuess}
         gameOver={gameOver}
         resetGame={resetGame}
+        endGame={endGame}
       />
       <Keyboard 
+        greenLetters={greenLetters}
+        yellowLetters={yellowLetters} 
+        guessedLetters={guessedLetters}
+        setGuessedLetters={setGuessedLetters}
+        disabledLetters={disabledLetters}
+        populateInput={populateInput}
+        gameOver={gameOver}
+      />
+      <KeyboardMobile 
         greenLetters={greenLetters}
         yellowLetters={yellowLetters} 
         guessedLetters={guessedLetters}

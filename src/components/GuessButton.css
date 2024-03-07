@@ -1,0 +1,53 @@
+.buttons {
+    display:flex;
+}
+.resetButton{
+    margin: 1em;
+    width: 40%;
+    border: 3px solid white;
+    border-radius: 5px;
+    background: hsl(0, 0%, 23%);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: .5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+.resetButton:hover,
+.resetButton:focus {
+  background-color: hsl(0, 0%, 66%);
+}
+.guessButton,
+.clearButton{
+    margin: 1em;
+    width: 40%;
+    border: 3px solid white;
+    border-radius: 5px;
+    background: hsl(0, 0%, 23%);
+    font-size: 1.5rem;
+    text-transform: uppercase;
+    padding: .5rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+}
+.guessButton {
+    background-color: rgb(83,141,78);
+    color: white;
+  }
+
+.guessButton:hover,
+.guessButton.focus {
+background-color: rgb(56, 94, 52)
+}
+
+.clearButton {
+background-color: rgb(141, 78, 78);
+color: white;
+}
+
+.clearButton:hover,
+.clearButton.focus {
+background-color: rgb(94, 52, 52)
+}

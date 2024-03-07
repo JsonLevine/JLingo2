@@ -23,21 +23,38 @@
   .btn.yellow {
     background-color: rgb(181,159,59);
     color: white;
-    cursor: not-allowed;
+  }
+
+  .btn.yellow:hover:not(.disabled),
+  .btn.yellow.focus:not(.disabled) {
+    background-color: rgb(136, 119, 45)
   }
 
   .btn.green {
     background-color: rgb(83,141,78);
     color: white;
-    cursor: not-allowed;
+  }
+
+  .btn.green:hover:not(.disabled),
+  .btn.green.focus:not(.disabled) {
+    background-color: rgb(56, 94, 52)
   }
   
   .btn.inactive {
-    opacity: .3;
-    cursor: not-allowed;
+    background-color: hsl(0, 0%, 15%);
+    border: 3px solid hsl(0, 0%, 25%);
+    color: hsl(0, 0%, 25%);
   }
+
+
+.btn.disabled{
+  background-color: hsl(0, 0%, 15%);
+  border: 3px solid hsl(0, 0%, 25%);
+  color: hsl(0, 0%, 25%);
+  cursor: not-allowed
+}
   
-  .btn:hover:not(:disabled),
-  .btn:focus:not(:disabled) {
-    background-color: hsl(0, 0%, 66%);
-  }
+.btn:hover:not(.yellow):not(.green):not(.disabled),
+.btn:focus:not(.yellow):not(.green):not(.disabled) {
+  background-color: hsl(0, 0%, 66%);
+}

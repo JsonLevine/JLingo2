@@ -36,7 +36,9 @@ type KeyboardProps = {
   yellowLetters: string[]
   guessedLetters: string[]
   setGuessedLetters: Function
+  disabledLetters: string[]
   populateInput: Function
+  gameOver: boolean
 }
 
 export default function Keyboard({
@@ -44,13 +46,11 @@ export default function Keyboard({
   yellowLetters,
   guessedLetters,
   setGuessedLetters,
+  disabledLetters,
   populateInput,
   disabled = false,
+  gameOver
 }: KeyboardProps) {
-
-function addGuessedLetter(key: string) {
-  setGuessedLetters([...guessedLetters, key])
-}
 
   return (
     <div className={styles.keyboard}>
@@ -58,6 +58,7 @@ function addGuessedLetter(key: string) {
         const isGreen = greenLetters.includes(key)
         const isYellow = yellowLetters.includes(key)
         const isInactive = guessedLetters.includes(key) && !isGreen && !isYellow
+        const isDisabled = disabledLetters.includes(key)
         return (
           <button
             onClick={() => populateInput(key)}
@@ -66,8 +67,8 @@ function addGuessedLetter(key: string) {
             ${isGreen ? styles.green : ""} 
             ${isYellow ? styles.yellow : ""} 
             ${isInactive ? styles.inactive : ""}
+            ${isDisabled ? styles.disabled : ""}
             `}
-            disabled={isInactive || isGreen || isYellow || disabled}
             key={key}
           >
             {key}

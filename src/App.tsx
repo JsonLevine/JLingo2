@@ -89,7 +89,7 @@ function App() {
       if(correctLetters === 5) {
         console.log("Winner")
         endGame(true)
-      } else if (currentRowRef.current == 6){
+      } else if (currentRowRef.current == 5){
         console.log("Loser")
         endGame(false)
       }
@@ -100,40 +100,40 @@ function App() {
       // Sets the row in between the winning row and the next so none are valid
       currentRowRef.current -=.5;
       setCurrentRow(currentRowRef.current)
-      // Invalidate the keyboard
-      let allKeys=[
-        'a',
-        'b',
-        'c',
-        'd',
-        'e',
-        'f',
-        'g',
-        'h',
-        'i',
-        'j',
-        'k',
-        'l',
-        'm',
-        'n',
-        'o',
-        'p',
-        'q',
-        'r',
-        's',
-        't',
-        'u',
-        'v',
-        'w',
-        'x',
-        'y',
-        'z',
-      ]
-      setDisabledLetters(allKeys)
       setGameOver(true)
     } else {
       setGameOver(true)
     }
+    // Invalidate the keyboard
+    let allKeys=[
+      'a',
+      'b',
+      'c',
+      'd',
+      'e',
+      'f',
+      'g',
+      'h',
+      'i',
+      'j',
+      'k',
+      'l',
+      'm',
+      'n',
+      'o',
+      'p',
+      'q',
+      'r',
+      's',
+      't',
+      'u',
+      'v',
+      'w',
+      'x',
+      'y',
+      'z',
+    ]
+    setDisabledLetters(allKeys)
   }
 
   function resetGame(){
@@ -146,6 +146,7 @@ function App() {
     setCurrentGuess([''])
     setEveryGuess([{letter: '', color: ''}].splice(0,0))
     setDisabledLetters([''])
+    setGameOver(false)
   }
 
   return (

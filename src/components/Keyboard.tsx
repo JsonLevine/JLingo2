@@ -60,9 +60,15 @@ export default function Keyboard({
 }: KeyboardProps) {
 
   function backspace(){
-    let currentInput = currentGuess.length - 1;
-    currentGuess[currentInput] = ''
-    setCurrentGuess(currentGuess)
+    if(currentGuess.length > 0) {
+      let currentInput = currentGuess.length-1;
+      console.log(currentInput)
+      let newGuess = []
+      for(let i=0; i<currentInput; i++ ){
+          newGuess[i] = currentGuess[i]
+      }
+      setCurrentGuess(newGuess)
+    }
   }
 
   return (

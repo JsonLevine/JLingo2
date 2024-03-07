@@ -27,7 +27,8 @@
 }
 .keyboardMobile .keyboardRow button{
  padding: .3rem;
- font-size: 1.3rem
+ font-size: 1.3rem;
+ width: 35px;
 }
 
 .keyboardRow{
@@ -50,7 +51,8 @@
   }
 
   .backspace img{
-    width: 25px;
+    width: 15px;
+    height: 17px;
   }
   
   .btn.yellow {

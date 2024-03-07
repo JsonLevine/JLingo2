@@ -1,5 +1,7 @@
 import React from 'react'
 import styles from './Keyboard.module.css';
+import arrowIcon from '../assets/arrow.png'
+
 
 const KEYSROW1 = ['q','w','e','r','t','y','u','i','o','p']
 const KEYSROW2 = ['a','s','d','f','g','h','j','k','l']
@@ -38,6 +40,8 @@ type KeyboardProps = {
   greenLetters: string[]
   yellowLetters: string[]
   guessedLetters: string[]
+  currentGuess: string[]
+  setCurrentGuess: Function
   setGuessedLetters: Function
   disabledLetters: string[]
   populateInput: Function
@@ -48,12 +52,20 @@ export default function Keyboard({
   greenLetters,
   yellowLetters,
   guessedLetters,
+  currentGuess,
+  setCurrentGuess,
   setGuessedLetters,
   disabledLetters,
   populateInput,
   gameOver
 }: KeyboardProps) {
 
+  function backspace(){
+    let currentInput = currentGuess.length - 1;
+    currentGuess[currentInput] = ''
+    setCurrentGuess(currentGuess)
+  }
+  
   return (
     <div className={styles.keyboardMobile}>
       <div className={styles.keyboardRow}>
@@ -124,6 +136,12 @@ export default function Keyboard({
             </button>
           )
         })}
+        <button onClick={() => backspace()} className={`
+          ${styles.btn} 
+          ${styles.backspace}
+          ${disabledLetters.length > 1 ? styles.disabled : ''}
+          `}><img src={arrowIcon}></img>
+        </button>
       </div>
     </div>
   )

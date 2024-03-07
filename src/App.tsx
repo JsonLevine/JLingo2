@@ -50,7 +50,7 @@ function App() {
   function submitGuess() {
     if (!validateGuess(currentGuess.join(''))) {
       console.log("Invalid word")
-      alert("invalid word")
+      alert("Sorry, '" + currentGuess.join('') + "' is not a valid word")
       return null
     }
 
@@ -171,6 +171,8 @@ function App() {
         yellowLetters={yellowLetters} 
         guessedLetters={guessedLetters}
         setGuessedLetters={setGuessedLetters}
+        currentGuess={currentGuess}
+        setCurrentGuess={setCurrentGuess}
         disabledLetters={disabledLetters}
         populateInput={populateInput}
         gameOver={gameOver}
@@ -180,6 +182,8 @@ function App() {
         yellowLetters={yellowLetters} 
         guessedLetters={guessedLetters}
         setGuessedLetters={setGuessedLetters}
+        currentGuess={currentGuess}
+        setCurrentGuess={setCurrentGuess}
         disabledLetters={disabledLetters}
         populateInput={populateInput}
         gameOver={gameOver}

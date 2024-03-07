@@ -6,6 +6,10 @@
     margin-top: .5em;
 }
 
+.currentRow{
+    
+}
+
 .letterBox {
     width:1.5em;
     height:1.5em;
@@ -35,6 +39,6 @@
 .yellow {
     background-color: rgb(181,159,59) !important;
 }
-input:disabled {
+input:disabled:not(.currentRow) {
     background: hsl(0, 0%, 8%);
 }

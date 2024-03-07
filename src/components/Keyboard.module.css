@@ -48,6 +48,10 @@
     cursor: pointer;
     color: white;
   }
+
+  .backspace img{
+    width: 25px;
+  }
   
   .btn.yellow {
     background-color: rgb(181,159,59);
@@ -79,7 +83,7 @@
 .btn.disabled{
   background-color: hsl(0, 0%, 15%);
   border: 3px solid hsl(0, 0%, 25%);
-  color: hsl(0, 0%, 25%);
+  opacity: 25%;
   cursor: not-allowed
 }
   

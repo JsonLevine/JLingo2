@@ -111,7 +111,7 @@ function App() {
       setCurrentGuess([''])
       if(correctLetters === 5) {
         endGame('winner')
-      } else if (currentRowRef.current == 6){
+      } else if (currentRowRef.current == 5){ //Update here if the number of rows ever changes
         endGame('loser')
       }
   }

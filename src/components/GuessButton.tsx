@@ -28,7 +28,7 @@ function GuessButton({
         <button onClick={() => setCurrentGuess([''])} className="clearButton">
           Clear 
         </button>
-        <button onClick={() => endGame(false)} className="clearButton">
+        <button onClick={() => endGame('gaveup')} className="clearButton">
           Give up 
         </button>
       </div>

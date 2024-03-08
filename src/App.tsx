@@ -69,7 +69,7 @@ function App() {
         correctLetters++
       }
     }
-    console.log(solutionArray)
+
     for(let i=0;i<5;i++) {
       if(solutionArray[i] == '*') {
       }
@@ -110,24 +110,26 @@ function App() {
       setEveryGuess(everyGuess.concat(newEveryGuess))
       setCurrentGuess([''])
       if(correctLetters === 5) {
-        console.log("Winner")
-        endGame(true)
+        endGame('winner')
       } else if (currentRowRef.current == 6){
-        console.log("Loser")
-        endGame(false)
+        endGame('loser')
       }
   }
   
-  function endGame(isWinner: boolean){
-    if(isWinner) {
+  function endGame(reason: string){
+    if(reason == 'winner') {
       // Sets the row in between the winning row and the next so none are valid
       currentRowRef.current -=.5;
       setCurrentRow(currentRowRef.current)
       setGameOver(true)
-    } else {
+    } else if (reason == 'loser'){
       // Populate the current row with the correct word, and make it green
       setCurrentGuess(solutionWord.split(''))
       currentRowRef.current -=1;
+      setCurrentRow(currentRowRef.current)
+      setGameOver(true)
+    } else if (reason == 'gaveup') {
+      setCurrentGuess(solutionWord.split(''))
       setCurrentRow(currentRowRef.current)
       setGameOver(true)
     }

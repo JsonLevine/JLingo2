@@ -58,20 +58,48 @@ function App() {
     let newGreenLetters = [''].splice(0,0)
     let newYellowLetters = [''].splice(0,0)
     let newGuessedLetters = [''].splice(0,0)
-    let newEveryGuess = [{letter: '', color: ''}].splice(0,0)
+    let newEveryGuess = [{letter: '', color: ''}]
     let correctLetters = 0
 
     for(let i=0;i<5;i++) {
       if (solutionArray[i] === currentGuess[i]) {
         newGreenLetters.push(currentGuess[i])
-        newEveryGuess.push({letter: currentGuess[i], color: 'green'})
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'green'}
+        solutionArray[i] = '*'
         correctLetters++
-      } else if(currentGuess[i] === solutionArray[0] || currentGuess[i] === solutionArray[1] || currentGuess[i] === solutionArray[2] || currentGuess[i] === solutionArray[3] || currentGuess[i] === solutionArray[4]) {
+      }
+    }
+    console.log(solutionArray)
+    for(let i=0;i<5;i++) {
+      if(solutionArray[i] == '*') {
+      }
+      else if(currentGuess[i] === solutionArray[0]) {
         newYellowLetters.push(currentGuess[i])
-        newEveryGuess.push({letter: currentGuess[i], color: 'yellow'})
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'yellow'}
+        solutionArray[0] = ' '
+      } 
+      else if(currentGuess[i] === solutionArray[1]) {
+        newYellowLetters.push(currentGuess[i])
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'yellow'}
+        solutionArray[1] = ' '
+      }
+      else if(currentGuess[i] === solutionArray[2]) {
+        newYellowLetters.push(currentGuess[i])
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'yellow'}
+        solutionArray[2] = ' '
+      }
+      else if(currentGuess[i] === solutionArray[3]) {
+        newYellowLetters.push(currentGuess[i])
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'yellow'}
+        solutionArray[3] = ' '
+      }
+      else if(currentGuess[i] === solutionArray[4]) {
+        newYellowLetters.push(currentGuess[i])
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'yellow'}
+        solutionArray[4] = ' '
       } else {
         newGuessedLetters.push(currentGuess[i])
-        newEveryGuess.push({letter: currentGuess[i], color: 'gray'})
+        newEveryGuess[i] = {letter: currentGuess[i], color: 'gray'}
       }
     }
       setGreenLetters(greenLetters.concat(newGreenLetters));
@@ -84,7 +112,7 @@ function App() {
       if(correctLetters === 5) {
         console.log("Winner")
         endGame(true)
-      } else if (currentRowRef.current == 5){
+      } else if (currentRowRef.current == 6){
         console.log("Loser")
         endGame(false)
       }
@@ -99,6 +127,8 @@ function App() {
     } else {
       // Populate the current row with the correct word, and make it green
       setCurrentGuess(solutionWord.split(''))
+      currentRowRef.current -=1;
+      setCurrentRow(currentRowRef.current)
       setGameOver(true)
     }
     // Invalidate the keyboard

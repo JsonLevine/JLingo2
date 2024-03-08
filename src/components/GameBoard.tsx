@@ -45,6 +45,7 @@ function GameBoard({
         <GuessRow row={2} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
         <GuessRow row={3} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
         <GuessRow row={4} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
+        <GuessRow row={5} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
         <GuessButton submitGuess={submitGuess} setCurrentGuess={setCurrentGuess} gameOver={gameOver} resetGame={resetGame} endGame={endGame}/>
     </div>
   )

@@ -6,6 +6,7 @@ import Keyboard from './components/Keyboard';
 import KeyboardMobile from './components/KeyboardMobile';
 import { gameWords } from './assets/gameWords';
 import { dictionaryWords } from './assets/dictionaryWords';
+import { allKeys } from './assets/allKeys';
 
 
 function App() {
@@ -30,7 +31,7 @@ function App() {
 
   function validateGuess(guess: string): boolean {
     for(var i =0; i< dictionaryWords.length; i++){
-      if(guess == dictionaryWords[i]){
+      if(guess === dictionaryWords[i]){
         return true;
       }
     }
@@ -39,8 +40,8 @@ function App() {
   }
 
   function populateInput(key: string) {
-    if(currentGuess[0] == '') setCurrentGuess([key])
-    else if (currentGuess.length == 5) {
+    if(currentGuess[0] === '') setCurrentGuess([key])
+    else if (currentGuess.length === 5) {
       setCurrentGuess([currentGuess[0],currentGuess[1],currentGuess[2],currentGuess[3],key])
     } else {
       setCurrentGuess([...currentGuess, key])
@@ -71,7 +72,7 @@ function App() {
     }
 
     for(let i=0;i<5;i++) {
-      if(solutionArray[i] == '*') {
+      if(solutionArray[i] === '*') {
       }
       else if(currentGuess[i] === solutionArray[0]) {
         newYellowLetters.push(currentGuess[i])
@@ -111,57 +112,29 @@ function App() {
       setCurrentGuess([''])
       if(correctLetters === 5) {
         endGame('winner')
-      } else if (currentRowRef.current == 5){ //Update here if the number of rows ever changes
+      } else if (currentRowRef.current === 5){ //Update here if the number of rows ever changes
         endGame('loser')
       }
   }
   
   function endGame(reason: string){
-    if(reason == 'winner') {
+    if(reason === 'winner') {
       // Sets the row in between the winning row and the next so none are valid
       currentRowRef.current -=.5;
       setCurrentRow(currentRowRef.current)
       setGameOver(true)
-    } else if (reason == 'loser'){
+    } else if (reason === 'loser'){
       // Populate the current row with the correct word, and make it green
       setCurrentGuess(solutionWord.split(''))
       currentRowRef.current -=1;
       setCurrentRow(currentRowRef.current)
       setGameOver(true)
-    } else if (reason == 'gaveup') {
+    } else if (reason === 'gaveup') {
       setCurrentGuess(solutionWord.split(''))
       setCurrentRow(currentRowRef.current)
       setGameOver(true)
     }
     // Invalidate the keyboard
-    let allKeys=[
-      'a',
-      'b',
-      'c',
-      'd',
-      'e',
-      'f',
-      'g',
-      'h',
-      'i',
-      'j',
-      'k',
-      'l',
-      'm',
-      'n',
-      'o',
-      'p',
-      'q',
-      'r',
-      's',
-      't',
-      'u',
-      'v',
-      'w',
-      'x',
-      'y',
-      'z',
-    ]
     setDisabledLetters(allKeys)
   }
 

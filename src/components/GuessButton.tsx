@@ -1,34 +1,34 @@
-import React from 'react'
 import './GuessButton.css';
 
-function GuessButton({
-  submitGuess,
-  setCurrentGuess,
-  gameOver,
-  resetGame,
-  endGame
-}: {
-  submitGuess : Function
-  setCurrentGuess: Function
-  gameOver: boolean
-  resetGame: Function
-  endGame: Function
-}) {
+interface propTypes {
+  props: {
+    submitGuess : Function
+    setCurrentGuess: Function
+    gameOver: boolean
+    resetGame: Function
+    endGame: Function
+  }
+}
 
+function GuessButton({
+  props 
+}: 
+  propTypes
+) {
   return (
     <>
-    { gameOver ? 
-      <button onClick={() => resetGame()} 
+    { props.gameOver ? 
+      <button onClick={() => props.resetGame()} 
         className='resetButton'>Play again?
       </button> :
       <div className='buttons'>
-        <button onClick={() => submitGuess()} className="guessButton">
+        <button onClick={() => props.submitGuess()} className="guessButton">
           GUESS 
         </button>
-        <button onClick={() => setCurrentGuess([''])} className="clearButton">
+        <button onClick={() => props.setCurrentGuess([''])} className="clearButton">
           Clear 
         </button>
-        <button onClick={() => endGame('gaveup')} className="clearButton">
+        <button onClick={() => props.endGame('gaveup')} className="clearButton">
           Give up 
         </button>
       </div>

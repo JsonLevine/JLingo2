@@ -13,7 +13,6 @@ function App() {
 
   const [currentRow, setCurrentRow] = useState(0)
   const currentRowRef = useRef(0)
-  const [currentFocus, setCurrentFocus] = useState(0)
   const [guessedLetters, setGuessedLetters] = useState([''])
   const [disabledLetters, setDisabledLetters] = useState([''])
   const [greenLetters, setGreenLetters] = useState([''])
@@ -155,17 +154,9 @@ function App() {
     <div className="App">
       <GameBoard 
         currentRow={currentRow}
-        setCurrentRow={setCurrentRow}
-        currentFocus={currentFocus}
-        setCurrentFocus={setCurrentFocus}
-        solutionWord={solutionWord}
-        setSolutionWord={setSolutionWord}
         currentGuess={currentGuess}
         setCurrentGuess={setCurrentGuess}
         everyGuess={everyGuess}
-        setEveryGuess={setEveryGuess}
-        guessedLetters={guessedLetters}
-        setGuessedLetters={setGuessedLetters}
         submitGuess={submitGuess}
         gameOver={gameOver}
         resetGame={resetGame}

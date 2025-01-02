@@ -1,4 +1,3 @@
-import React from 'react'
 import styles from './Keyboard.module.css';
 import arrowIcon from '../assets/arrow.png'
 
@@ -6,34 +5,6 @@ import arrowIcon from '../assets/arrow.png'
 const KEYSROW1 = ['q','w','e','r','t','y','u','i','o','p']
 const KEYSROW2 = ['a','s','d','f','g','h','j','k','l']
 const KEYSROW3 = ['z','x','c','v','b','n','m']
-const KEYS = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-]
 
 type KeyboardProps = {
   disabled?: boolean
@@ -54,10 +25,8 @@ export default function Keyboard({
   guessedLetters,
   currentGuess,
   setCurrentGuess,
-  setGuessedLetters,
   disabledLetters,
   populateInput,
-  gameOver
 }: KeyboardProps) {
 
   function backspace(){

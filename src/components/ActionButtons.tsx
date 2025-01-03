@@ -1,4 +1,4 @@
-import './GuessButton.css';
+import './ActionButtons.css';
 
 interface propTypes {
   props: {
@@ -10,7 +10,7 @@ interface propTypes {
   }
 }
 
-function GuessButton({
+function ActionButtons({
   props 
 }: 
   propTypes
@@ -23,7 +23,7 @@ function GuessButton({
       </button> :
       <div className='buttons'>
         <button onClick={() => props.submitGuess()} className="guessButton">
-          GUESS 
+          Guess 
         </button>
         <button onClick={() => props.setCurrentGuess([''])} className="clearButton">
           Clear 
@@ -37,4 +37,4 @@ function GuessButton({
   )
 }
 
-export default GuessButton
+export default ActionButtons

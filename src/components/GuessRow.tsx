@@ -1,32 +1,24 @@
-import React from 'react'
 import styles from './GuessRow.module.css';
 
-function GuessRow({
-  row,
-  currentRow,
-  setCurrentRow,
-  currentFocus,
-  setCurrentFocus,
-  currentGuess,
-  setCurrentGuess,
-  everyGuess,
-  setEveryGuess,
-}:{
-  row: number
-  currentRow: number
-  setCurrentRow: Function
-  currentFocus: number
-  setCurrentFocus: Function
-  currentGuess: string[]
-  setCurrentGuess: Function
-  everyGuess: {letter: string, color: string}[]
-  setEveryGuess: Function
-}) {
+interface propTypes {
+  props: {
+    row: number
+    currentRow: number
+    currentGuess: string[]
+    setCurrentGuess: Function
+    everyGuess: {letter: string, color: string}[]
+  }
+}
 
-  const isCurrentRow = row === currentRow
-  const isGuessedRow = row < currentRow
-  const adjustForRowNumber = row*5
-  const adjustForRowNumberForStyle = row*5
+function GuessRow({
+  props 
+}: 
+  propTypes
+) {
+
+  const isCurrentRow = props.row === props.currentRow
+  const isGuessedRow = props.row < props.currentRow
+  const adjustForRowNumber = props.row*5
 
   function getColor(letter: {letter: string, color: string}) {
     switch(letter?.color){
@@ -38,80 +30,37 @@ function GuessRow({
         return styles.yellow;
       case 'invalid':
         return styles.invalid
-    } return null
+      default:
+        return null;
+    } 
   }
+
+  function generateInputs() {
+    let inputs = []
+    for(let i=0; i<5; i++){
+      inputs.push(
+        <div className={styles.letterBox} id={'form'+props.row+'_'+i}>
+          <input 
+            value={isCurrentRow ? (props.currentGuess[i] || '') : (isGuessedRow ? props.everyGuess[adjustForRowNumber+i]?.letter : '') }
+            onChange={e => props.setCurrentGuess(props.currentGuess.splice(i,1,e.target.value))}
+            disabled={true}
+            className={`
+            ${isGuessedRow ? getColor(props.everyGuess[adjustForRowNumber+i]) : styles.inputBox}
+            ${isCurrentRow ? styles.currentRow : ''}
+            `}
+            type="text" 
+            id={'input'+props.row+'_'+i}
+            maxLength={1}
+          />
+         </div>
+      )
+    }
+    return inputs
+  }
+  
   return (
     <div className={styles.guessRow}>
-        <div className={styles.letterBox} id={'form'+row+'_0'}>
-          <input 
-            value={isCurrentRow ? (currentGuess[0] || '') : (isGuessedRow ? everyGuess[adjustForRowNumber]?.letter : '')}
-            onChange={e => setCurrentGuess(currentGuess.splice(0,1,e.target.value))}
-            disabled={true}
-            className={`
-            ${isGuessedRow ? getColor(everyGuess[adjustForRowNumberForStyle]) : styles.inputBox}
-            ${isCurrentRow ? styles.currentRow : ''}
-            `}
-            type="text" 
-            id={'input'+row+'_0'}
-            maxLength={1}
-          />
-         </div>
-         <div className={styles.letterBox} id={'form'+row+'_1'}>
-          <input 
-            value={isCurrentRow ? (currentGuess[1] || '') : (isGuessedRow ? everyGuess[adjustForRowNumber+1]?.letter : '') }
-            onChange={e => setCurrentGuess(currentGuess.splice(1,1,e.target.value))}
-            disabled={true}
-            className={`
-            ${isGuessedRow ? getColor(everyGuess[adjustForRowNumberForStyle+1]) : styles.inputBox}
-            ${isCurrentRow ? styles.currentRow : ''}
-            `}
-            type="text" 
-            id={'input'+row+'_1'}
-            maxLength={1}
-          />
-         </div>
-         <div className={styles.letterBox} id={'form'+row+'_2'}>
-          <input 
-            value={isCurrentRow ? (currentGuess[2] || '') : (isGuessedRow ? everyGuess[adjustForRowNumber+2]?.letter : '') }
-            onChange={e => setCurrentGuess(currentGuess.splice(2,1,e.target.value))}
-            disabled={true}
-            className={`
-            ${isGuessedRow ? getColor(everyGuess[adjustForRowNumberForStyle+2]) : styles.inputBox}
-            ${isCurrentRow ? styles.currentRow : ''}
-            `}
-            type="text" 
-            id={'input'+row+'_2'}
-            maxLength={1}
-          />
-         </div>
-         <div className={styles.letterBox} id={'form'+row+'_3'}>
-          <input 
-            value={isCurrentRow ? (currentGuess[3] || '') : (isGuessedRow ? everyGuess[adjustForRowNumber+3]?.letter : '') }
-            onChange={e => setCurrentGuess(currentGuess.splice(3,1,e.target.value))}
-            disabled={true}
-            className={`
-            ${isGuessedRow ? getColor(everyGuess[adjustForRowNumberForStyle+3]) : styles.inputBox}
-            ${isCurrentRow ? styles.currentRow : ''}
-            `}
-            type="text" 
-            id={'input'+row+'_3'}
-            maxLength={1}
-          />
-         </div>
-         <div className={styles.letterBox} id={'form'+row+'_4'}>
-          <input 
-            value={isCurrentRow ? (currentGuess[4] || '') : (isGuessedRow ? everyGuess[adjustForRowNumber+4]?.letter : '') }
-            onChange={e => setCurrentGuess(currentGuess.splice(4,1,e.target.value))}
-            disabled={true}
-            className={`
-            ${isGuessedRow ? getColor(everyGuess[adjustForRowNumberForStyle+4]) : styles.inputBox}
-            ${isCurrentRow ? styles.currentRow : ''}
-            `}
-            type="text" 
-            id={'input'+row+'_4'}
-            maxLength={1}
-          />
-         </div>
+      {generateInputs()}
     </div>
   )
 }

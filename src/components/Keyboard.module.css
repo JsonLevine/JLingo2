@@ -10,7 +10,6 @@
 
 .keyboard {
     margin: 0 auto;
-    /* width: 60%; */
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -44,48 +43,48 @@
 }
 
 .btn {
-    width: 2em;
-    border: 3px solid white;
-    border-radius: 5px;
-    background: hsl(0, 0%, 23%);
-    font-size: 1.5rem;
-    text-transform: uppercase;
-    padding: .5rem;
-    font-weight: bold;
-    cursor: pointer;
-    color: white;
-  }
+  width: 2em;
+  border: 3px solid white;
+  border-radius: 5px;
+  background: hsl(0, 0%, 23%);
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  padding: .5rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: white;
+}
 
-  .backspace img{
-    width: 15px;
-    height: 17px;
-  }
-  
-  .btn.yellow {
-    background-color: rgb(181,159,59);
-    color: white;
-  }
+.backspace img{
+  width: 15px;
+  height: 17px;
+}
 
-  .btn.yellow:hover:not(.disabled),
-  .btn.yellow.focus:not(.disabled) {
-    background-color: rgb(136, 119, 45)
-  }
+.btn.yellow {
+  background-color: rgb(181,159,59);
+  color: white;
+}
 
-  .btn.green {
-    background-color: rgb(83,141,78);
-    color: white;
-  }
+.btn.yellow:hover:not(.disabled),
+.btn.yellow.focus:not(.disabled) {
+  background-color: rgb(136, 119, 45)
+}
 
-  .btn.green:hover:not(.disabled),
-  .btn.green.focus:not(.disabled) {
-    background-color: rgb(56, 94, 52)
-  }
-  
-  .btn.inactive {
-    background-color: hsl(0, 0%, 15%);
-    border: 3px solid hsl(0, 0%, 25%);
-    color: hsl(0, 0%, 25%);
-  }
+.btn.green {
+  background-color: rgb(83,141,78);
+  color: white;
+}
+
+.btn.green:hover:not(.disabled),
+.btn.green.focus:not(.disabled) {
+  background-color: rgb(56, 94, 52)
+}
+
+.btn.inactive {
+  background-color: hsl(0, 0%, 15%);
+  border: 3px solid hsl(0, 0%, 25%);
+  color: hsl(0, 0%, 25%);
+}
 
 
 .btn.disabled{

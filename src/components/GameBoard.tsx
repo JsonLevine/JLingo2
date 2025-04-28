@@ -1,51 +1,57 @@
-import React from 'react'
 import './GameBoard.css';
 import GuessRow from './GuessRow';
-import GuessButton from './GuessButton';
+import ActionButtons from './ActionButtons';
+
+interface propTypes {
+  props: {
+    numberOfGuesses: number
+    currentRow: number
+    currentGuess: string[]
+    setCurrentGuess: Function
+    everyGuess: {letter: string, color: string}[]
+    submitGuess: Function
+    gameOver: boolean
+    resetGame: Function
+    endGame: Function
+  }
+}
 
 function GameBoard({
-  currentRow,
-  setCurrentRow,
-  currentFocus,
-  setCurrentFocus,
-  solutionWord,
-  setSolutionWord,
-  currentGuess,
-  setCurrentGuess,
-  everyGuess,
-  setEveryGuess,
-  guessedLetters,
-  setGuessedLetters,
-  submitGuess,
-  gameOver,
-  resetGame,
-  endGame
-}: {
-  currentRow: number
-  setCurrentRow: Function
-  currentFocus: number
-  setCurrentFocus: Function
-  solutionWord: string
-  setSolutionWord: Function
-  currentGuess: string[]
-  setCurrentGuess: Function
-  everyGuess: {letter: string, color: string}[]
-  setEveryGuess: Function
-  guessedLetters: string[]
-  setGuessedLetters: Function
-  submitGuess: Function
-  gameOver: boolean
-  resetGame: Function
-  endGame: Function
-}) {
+  props
+}: 
+  propTypes
+) {
+
+  const ActionButtonsProps = {
+    submitGuess: props.submitGuess,
+    setCurrentGuess: props.setCurrentGuess,
+    gameOver: props.gameOver,
+    resetGame: props.resetGame,
+    endGame: props.endGame
+  }
+
+  function generateRows() {
+    let rows = []
+    for(let i=0; i<props.numberOfGuesses; i++){
+      const GuessRowProps = {
+        row: i,
+        currentRow: props.currentRow,
+        currentGuess: props.currentGuess,
+        setCurrentGuess: props.setCurrentGuess,
+        everyGuess: props.everyGuess,
+      }
+
+      rows.push(
+        <GuessRow props={GuessRowProps}/>
+      )
+    }
+    return rows
+  }
+
   return (
     <div className='gameBoard'>
-        <GuessRow row={0} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
-        <GuessRow row={1} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
-        <GuessRow row={2} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
-        <GuessRow row={3} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
-        <GuessRow row={4} currentRow={currentRow} setCurrentRow={setCurrentRow} currentFocus={currentFocus} setCurrentFocus={setCurrentFocus} currentGuess={currentGuess} setCurrentGuess={setCurrentGuess} everyGuess={everyGuess} setEveryGuess={setEveryGuess}/>
-        <GuessButton submitGuess={submitGuess} setCurrentGuess={setCurrentGuess} gameOver={gameOver} resetGame={resetGame} endGame={endGame}/>
+        {generateRows()}
+        <ActionButtons props={ActionButtonsProps}/>
     </div>
   )
 }

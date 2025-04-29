@@ -35,7 +35,13 @@ function GuessRow({
     } 
   }
 
+  function handleKeyPress(key: string) {
+    console.log(`Key pressed: ${key}`);
+  };
+
+
   function generateInputs() {
+
     let inputs = []
     for(let i=0; i<5; i++){
       inputs.push(
@@ -43,6 +49,7 @@ function GuessRow({
           <input 
             value={isCurrentRow ? (props.currentGuess[i] || '') : (isGuessedRow ? props.everyGuess[adjustForRowNumber+i]?.letter : '') }
             onChange={e => props.setCurrentGuess(props.currentGuess.splice(i,1,e.target.value))}
+            onKeyDown={e => handleKeyPress(e.key)}
             disabled={true}
             className={`
             ${isGuessedRow ? getColor(props.everyGuess[adjustForRowNumber+i]) : styles.inputBox}
